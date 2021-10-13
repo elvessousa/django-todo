@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Elf's site{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" >
+  </head>
+  <body>
+    <header>
+      <h3 class="brand">todolists</h3>
+      <nav>
+        <a href="#">Login</a>
+      </nav>
+    </header>
+
+    <aside class="sidenav">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/create">Create</a>
+        <a href="/1">View</a>
+      </nav>
+    </aside>
+
+    <main id="content" class="main" name="content">
+      {% block content %} {% endblock %}
+    </main>
+  </body>
+</html>
