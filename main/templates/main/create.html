@@ -1,13 +1,24 @@
 <!-- prettier-ignore -->
-{% extends 'main/base.html' %} 
+{% extends "main/base.html" %} 
 
 {% block title %}Create a new list{% endblock %} 
 
 {% block content %}
+{% if user.is_authenticated %}
 <h1>Create a new list</h1>
 <form method="post" action="/create/">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" name="save">Create list</button>
 </form>
+{% else %}
+<section class="login-message">
+  <h4>Content for users only</h4>
+  <p>
+    <a href="/login">Login</a> 
+    to see the content available in this page.
+  </p>
+</section>
+{% endif %}
+
 {% endblock %}

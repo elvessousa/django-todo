@@ -1,8 +1,9 @@
-{% extends 'main/base.html' %} 
+{% extends "main/base.html" %} 
 
 {% block title %}List{% endblock %} 
 
 {% block content %}
+{% if user.is_authenticated %}
 <h1>{{ list.name }}</h1>
 <form method="post" action="#">
   {% csrf_token %}
@@ -25,4 +26,14 @@
   <input type="text" name="new">
   <button type="submit" name="newItem" value="newItem">Add item</button>
 </form>
+{% else %}
+<section class="login-message">
+  <h4>Content for users only</h4>
+  <p>
+    <a href="/login">Login</a> 
+    to see the content available in this page.
+  </p>
+</section>
+{% endif %}
+
 {% endblock %}

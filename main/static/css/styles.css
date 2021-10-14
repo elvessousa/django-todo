@@ -21,33 +21,37 @@ a {
 }
 
 input[type='text'] {
+  border-radius: 0.25rem;
   border: 1px solid #eee;
   font-size: 16px;
   padding: 0.3rem;
-  border-radius: 0.25rem;
 }
 
 button {
   background: var(--button-back);
+  border-radius: 0.25rem;
   border: 0;
   color: #fff;
-  font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 1em;
-  border-radius: 0.25rem;
+  font-size: 12px;
   font-weight: bold;
+  padding: 1em;
+  cursor: pointer;
 }
 
 header {
-  grid-column-start: 1;
-  grid-column-end: -1;
-  display: flex;
-  padding: 1rem;
   border-bottom: 1px solid var(--borders);
+  display: flex;
+  grid-column-end: -1;
+  grid-column-start: 1;
+  padding: 1rem;
 }
 
 header a {
   color: #000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-left: 1rem;
 }
 
 header nav {

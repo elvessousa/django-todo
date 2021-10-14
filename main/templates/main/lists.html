@@ -1,0 +1,26 @@
+{% extends "main/base.html" %} 
+
+{% block title %}List{% endblock %} 
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Your lists</h1>
+<ul>
+  {% for todo in user.todolist.all %}
+  <li>
+    <h3>
+      <a href="/{{ todo.id }}">{{ todo.name }}</a>
+    </h3>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<section class="login-message">
+  <h4>Content for users only</h4>
+  <p>
+    <a href="/login">Login</a>
+    to see the content available in this page.
+  </p>
+</section>
+{% endif %} 
+{% endblock %}
