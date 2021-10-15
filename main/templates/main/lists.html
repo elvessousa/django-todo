@@ -4,16 +4,18 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<h1>Your lists</h1>
-<ul>
-  {% for todo in user.todolist.all %}
-  <li>
-    <h3>
-      <a href="/{{ todo.id }}">{{ todo.name }}</a>
-    </h3>
-  </li>
-  {% endfor %}
-</ul>
+<section class="page-content">
+  <h1>Your lists</h1>
+  <ul class="todo-lists">
+    {% for todo in user.todolist.all %}
+    <li>
+      <h3>
+        <a href="/{{ todo.id }}">{{ todo.name }}</a>
+      </h3>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
 {% else %}
 <section class="login-message">
   <h4>Content for users only</h4>

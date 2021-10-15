@@ -6,28 +6,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Elf's site{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" >
   </head>
-  <body>
+  <body class="{{ pagename }}">
     <header>
-      <h3 class="brand">todolists</h3>
+      <h3 class="brand">
+        <a href="/">todolists</a>
+      </h3>
       <nav>
-        <a href="/register">Sign up</a>
         {% if user.is_authenticated %}
+        <a href="/create">Create</a>
+        <a href="/lists">Your lists</a>
         <a href="/logout">Logout</a>
         {% else %}
+        <a href="/register">Sign up</a>
         <a href="/login">Login</a>
         {% endif %}
       </nav>
     </header>
-
-    <aside class="sidenav">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/create">Create</a>
-        <a href="/lists">View</a>
-      </nav>
-    </aside>
 
     <main id="content" class="main" name="content">
       {% block content %} {% endblock %}

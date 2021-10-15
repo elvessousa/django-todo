@@ -7,7 +7,7 @@ from main.models import ToDoList
 
 def index(response, id):
     """ List items page """
-
+    pagename = "page"
     tdlist = ToDoList.objects.get(id=id)
 
     if tdlist in response.user.todolist.all():
@@ -31,18 +31,24 @@ def index(response, id):
                 else:
                     print("invalid input")
 
-        return render(response, "main/list.html", {"list": tdlist})
-    return render(response, "main/lists.html", {})
+        return render(response, "main/list.html", {
+            "list": tdlist,
+            "pagename": pagename
+        })
+
+    return render(response, "main/lists.html", {"pagename": pagename})
 
 
 def home(response):
     """ Home page """
+    pagename = "home"
 
-    return render(response, "main/home.html", {})
+    return render(response, "main/home.html", {"pagename": pagename})
 
 
 def create(response):
     """ Create lists page """
+    pagename = "page"
 
     if response.method == "POST":
         form = CreateNewList(response.POST)
@@ -57,9 +63,11 @@ def create(response):
     else:
         form = CreateNewList()
     return render(response, "main/create.html", {
-        "form": form
+        "form": form,
+        "pagename": pagename
     })
 
 
 def lists(response):
-    return render(response, "main/lists.html")
+    pagename = "page"
+    return render(response, "main/lists.html", {"pagename": pagename})
